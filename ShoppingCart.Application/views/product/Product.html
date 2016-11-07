@@ -1,0 +1,25 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title pull-left">Products</h3>
+        <h3 class="panel-title pull-right"><a ui-sref="shoppingCart">My Shopping Cart ({{cartItemQuantity}})</a></h3>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products">
+                    <td>{{product.Name}}</td>
+                    <td>{{product.Price | currency}}</td>
+                    <td><button class="btn btn-primary" ng-click="addToCart(product)">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

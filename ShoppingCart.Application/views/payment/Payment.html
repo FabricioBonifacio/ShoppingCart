@@ -1,0 +1,39 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a ui-sref="index">Payment Information</a></h3>
+        <h3 class="panel-title pull-right"></h3>
+    </div>
+    <div class="panel-body">
+        <div ng-show="cartItens.length == 0">Your shopping cart is empty. Go back to <a ui-sref="index">Products</a> and add something.</div>
+        <table class="table table-striped" ng-show="cartItens.length > 0">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price Un</th>
+                    <th>Quantity</th>
+                    <th>Item Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cartItem in cartItens">
+                    <td>{{cartItem.Product.Name}}</td>
+                    <td>{{cartItem.Product.Price | currency}}</td>
+                    <td><input type="text" class="form-control" ng-model="cartItem.Quantity" ng-change="getTotalPrice(cartItem)" /></td>
+                    <td>{{cartItem.Product.Price * cartItem.Quantity | currency}}</td>
+                    <td><button class="btn btn-primary" type="submit" ng-click="removeFromCart(cartItem)">Remove from Cart</button></td>
+                </tr>
+                <tr>
+                    <td><h4><b>Total Price</b></h4></td>
+                    <td></td>
+                    <td></td>
+                    <td><h4><b>{{totalPrice | currency}}</b></h4></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-3 pull-right"><button class="btn btn-warning" ng-disabled="cartItens.length == 0">Finalizar Compra</button></div>
+        </div>
+    </div>
+</div>
